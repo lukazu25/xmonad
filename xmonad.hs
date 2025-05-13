@@ -48,7 +48,7 @@ myLayouts = avoidStruts $
     tiled = Tall 1 (3/100) (1/2)
     mirrorTiled = Mirror tiled
     full = Full
-    grid = Grid
+    grid = spacingRaw False (Border 24 4 4 4) False (Border 4 4 4 4) True Grid
     tabbedLayout = noBorders $ tabbed shrinkText myTabTheme
 
 -- ManageHook with floating rules
