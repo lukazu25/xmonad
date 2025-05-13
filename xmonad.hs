@@ -51,10 +51,14 @@ myLayouts = avoidStruts $
     grid = Grid
     tabbedLayout = noBorders $ tabbed shrinkText myTabTheme
 
+-- ManageHook with floating rules
+myManageHook :: ManageHook
+myManageHook = className =? "pavucontrol" --> doFloat
+
 main = do
   xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
   xmonad $ docks . ewmhFullscreen . ewmh $ def
-    { manageHook = manageDocks <+> manageHook def
+    { manageHook = manageDocks <+> myManageHook <+> manageHook def
     , layoutHook = myLayouts
     , handleEventHook = handleEventHook def
     , logHook = dynamicLogWithPP xmobarPP
