@@ -42,7 +42,7 @@ myLayouts = avoidStruts $
   where
     -- Apply spacing only to these layouts
     tiledLayouts = spacingRaw False (Border 24 4 4 4) False (Border 4 4 4 4) True $
--- add smartBorders tiled ||| smartBorders mirrorTiled if you dont want border on single window
+-- add smartBorders tiled ||| smartBorders mirrorTiled if you don't want border on single window
                      tiled ||| mirrorTiled
 
     tiled = Tall 1 (3/100) (1/2)
@@ -50,6 +50,8 @@ myLayouts = avoidStruts $
     full = Full
     grid = spacingRaw False (Border 24 4 4 4) False (Border 4 4 4 4) True Grid
     tabbedLayout = noBorders $ tabbed shrinkText myTabTheme
+
+-- if you don't want spaces between windows remove spacingRaw line
 
 -- ManageHook with floating rules
 myManageHook :: ManageHook
