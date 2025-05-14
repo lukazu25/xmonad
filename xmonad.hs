@@ -60,7 +60,7 @@ myManageHook :: ManageHook
 myManageHook = className =? "pavucontrol" --> doFloat
 
 main = do
-  xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
+  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
   xmonad $ docks . ewmhFullscreen . ewmh $ def
     { manageHook = manageDocks <+> myManageHook <+> manageHook def
     , layoutHook = myLayouts
