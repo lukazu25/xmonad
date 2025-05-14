@@ -1,5 +1,5 @@
 Config {
-  font = "xft:JetBrainsMono Nerd Font:size=12:antialias=true",
+  font = "xft:JetBrainsMono Nerd Font:size=12",
   additionalFonts = [],
   bgColor = "#282828",  -- Gruvbox dark background
   fgColor = "#ebdbb2",  -- Gruvbox light foreground
