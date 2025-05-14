@@ -13,6 +13,7 @@ import System.IO
 import qualified XMonad.StackSet as W
 import Graphics.X11.Xlib
 import Graphics.X11.ExtraTypes.XF86
+import XMonad.Hooks.ManageHelpers (doRectFloat)
 
 -- Gruvbox colors
 gruvboxBg0, gruvboxFg0, gruvboxYellow, gruvboxRed :: String
@@ -57,7 +58,7 @@ myLayouts = avoidStruts $
 
 -- ManageHook with floating rules
 myManageHook :: ManageHook
-myManageHook = className =? "pavucontrol" --> doFloat
+myManageHook = className =? "pavucontrol" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)
 
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
