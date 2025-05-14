@@ -1,0 +1,9 @@
+[global]
+frame_color ="#d65d0e"
+separator_color = frame
+background = "#282828"
+foreground = "#ebdbb2"
+
+timeout = 2
+font = JetBrains Mono Nerd Font  10
+markup = full
