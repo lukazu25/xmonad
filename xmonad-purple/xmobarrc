@@ -1,0 +1,66 @@
+Config {
+  overrideRedirect = False,
+  font = "xft:JetBrainsMono Nerd Font propo:size=12",
+  additionalFonts =
+    [ "xft:Font Awesome 6 Free Solid:pixelsize=12"
+    , "xft:Font Awesome 6 Brands:pixelsize=12"
+    , "xft:Noto Color Emoji:pixelsize=11"
+    ],
+  bgColor = "#282828",
+  fgColor = "#ebdbb2",
+  position = Static { xpos = 0, ypos = 1050, width = 1920, height = 30 },
+  lowerOnStart = False,
+  hideOnStart = False,
+  allDesktops = True,
+  persistent = True,
+
+  commands = [
+    -- Kernel info
+    Run Com "uname" ["-s", "-r"] "kernel" 0,
+
+    -- Battery status
+    Run BatteryP ["BAT0"]
+      [ "-t", "Batt: <acstatus><left>% / <timeleft>"
+      , "-L", "10", "-H", "80"
+      , "-l", "red"
+      , "--", "-O", "↑", "-o", "↓", "-i", "="
+      ] 10,
+
+    -- Disk usage
+    Run DiskU [("/", "<free>"), ("sdb2", "<usedbar>")]
+      [ "-L", "20", "-H", "50", "-m", "1", "-p", "3" ] 20,
+
+    -- CPU usage
+    Run Cpu
+      [ "-t", "CPU: <total>%"
+      , "-L", "3"
+      , "-H", "50"
+      , "--high", "red"
+      ] 10,
+
+    -- Keyboard layout
+    Run Kbd [("us", "🇺🇸"), ("ru", "🇷🇺"), ("ge", "🇬🇪")],
+
+    -- Memory usage
+    Run Memory ["--template", "RAM: <usedratio>%"] 10,
+
+    -- Date and time
+    Run Date "%a %Y-%m-%d %H:%M" "date" 10,
+
+    -- Workspace info from xmonad
+    Run StdinReader
+  ],
+
+  sepChar = "%",
+  alignSep = "}{",
+
+  template =
+    "%StdinReader% }{ \
+    \<box type=Bottom width=2 color=#cc241d><fc=#cc241d> %kernel%</fc></box>   \
+    \<box type=Bottom width=2 color=#98971a><fc=#98971a>󰍛 %cpu%</fc></box>   \
+    \<box type=Bottom width=2 color=#d79921><fc=#d79921>  %memory%</fc></box>   \
+    \<box type=Bottom width=2 color=#458588><fc=#458588>  %battery%</fc></box>   \
+    \<box type=Bottom width=2 color=#b16286><fc=#b16286>󰒋 Root: %disku%</fc></box>   \
+    \<box type=Bottom width=2 color=#689d6a><fc=#689d6a>Layout: %kbd%</fc></box>   \
+    \<box type=Bottom width=2 color=#7fa2ac><fc=#7fa2ac>󱑁 %date%</fc></box>"
+}

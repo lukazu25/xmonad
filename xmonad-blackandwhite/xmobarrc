@@ -1,0 +1,54 @@
+Config {
+  font = "xft:JetBrainsMono Nerd Font:size=12",
+  additionalFonts = [],
+  bgColor = "#000000",  -- Black background
+  fgColor = "#FFFFFF",  -- White foreground
+  position = Static { xpos = 0, ypos = 1050, width = 1920, height = 30 },
+  lowerOnStart = True,
+  hideOnStart = False,
+  allDesktops = True,
+  persistent = True,
+  commands = [
+    -- CPU usage
+    Run Cpu ["-L", "10", "-H", "80",
+             "-n", "#FFFFFF", "-h", "#FFFFFF"] 10,
+
+    -- Memory usage
+    Run Memory ["-t", "<usedratio>"] 10,
+
+    -- Date and time
+    Run Date "%a %b %_d %H:%M" "date" 10,
+
+    -- Battery status
+    Run Battery [
+      "-t", "<acstatus> <left>%",
+      "-L", "10", "-H", "80",
+      "-l", "#FFFFFF", "-n", "#FFFFFF", "-h", "#FFFFFF"
+    ] 50,
+
+    -- Wireless network
+    Run Wireless "wlan0" [
+      "-t", "<essid> <quality>%",
+      "-L", "30", "-H", "70",
+      "-l", "#FFFFFF", "-n", "#FFFFFF", "-h", "#FFFFFF"
+    ] 20,
+
+    -- Network status
+    Run Network "enp1s0" [
+      "-t", "<rx> ↓↑ <tx>",
+      "-S", "True", "-L", "1000", "-H", "10000",
+      "-l", "#FFFFFF", "-n", "#FFFFFF", "-h", "#FFFFFF"
+    ] 20,
+
+    -- Volume status (with mute check)
+    Run Com "bash" [
+      "-c", "if pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'Mute: yes'; then echo 'Mute'; else pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}'; fi || echo 'N/A'"
+    ] "volume" 10,
+
+    -- StdinReader (for custom input from stdin)
+    Run StdinReader
+  ],
+  sepChar = "%",
+  alignSep = "}{",
+  template = "%StdinReader% }{ %cpu% | %memory% | %wlan0% | %enp1s0% | Vol: %volume% | %battery% | %date%"
+}

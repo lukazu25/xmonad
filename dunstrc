@@ -1,0 +1,24 @@
+[global]
+font = JetBrains Mono Nerd Font 10
+markup = full
+
+[urgency_low]
+frame_color = "#ebebeb"
+background = "#0a2e15"
+foreground = "#ebebeb"
+separator_color = frame
+timeout = 5
+
+[urgency_normal]
+frame_color = "#d65d0e"
+background = "#282828"
+foreground = "#ebdbb2"
+separator_color = frame
+timeout = 3
+
+[urgency_critical]
+frame_color = "#ebebeb"
+background = "#b31e3c"
+foreground = "#ebebeb"
+separator_color = frame
+timeout = 10
