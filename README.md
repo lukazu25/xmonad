@@ -10,4 +10,4 @@ dunst config
 ```bash
 sudo cp dunstrc ~/.config/dunst/
 ```
-If you want Black and White config rename them to xmonad.hs and xmobarrc
+
