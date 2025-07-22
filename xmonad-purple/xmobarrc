@@ -8,7 +8,7 @@ Config {
     ],
   bgColor = "#282828",
   fgColor = "#ebdbb2",
-  position = Static { xpos = 0, ypos = 1050, width = 1920, height = 30 },
+  position = BottomSize L 100 30,
   lowerOnStart = False,
   hideOnStart = False,
   allDesktops = True,
