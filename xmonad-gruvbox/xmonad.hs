@@ -81,7 +81,7 @@ main = do
     , focusedBorderColor = gruvboxYellow
     , workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     , startupHook = do
-        spawn "xrandr --output Virtual-1 --mode 1920x1080"
+        spawn "xrandr -s 1920x1080"
         spawn "nitrogen --restore"
         spawn "pkill -u $USER dunst; dunst &"
         spawn "setxkbmap -layout us,ru,ge -option 'grp:alt_shift_toggle'"
